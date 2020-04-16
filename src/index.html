@@ -1,13 +1,147 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Webpack Starter Kit</title>
-  </head>
-  <body>
-    <h1>Webpack Starter Kit</h1>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overlook</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- <nav>
+    <h1>Overlook</h1>
+    <input id="searchbar" class="search" type="text" name="search" placeholder="search guess name" />
+  </nav> -->
+
+  <main>
+    <h2>Welcome To Overlook!</h2>
+    <p>Please enter your usename and password to enter.</p>
+    <div class="login-items">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button class="sign-in">Sign in</button>
+    </div>
+  </main>
+
+
+  <!-- manager dashboard -->
+  <!-- <section class="manager-dashboard-container">
+    <h3>Today's Snapshot</h3>
+    <div class="all-totals-container">
+      <div class="total-rooms-container">
+        <h4>Total Rooms Available</h4>
+        <p></p>
+      </div>
+      <div class="total-revenue-container">
+        <h4>Total Revenue</h4>
+        <p></p>
+      </div>
+      <div class="percent-rooms-occupied-container">
+        <h4>% of Rooms occupied</h4>
+        <p></p>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- manager search results page -->
+  <!-- <section class="manager-bookings-header">
+    <h3>Bookings for INSERT NAME</h3>
+    <p>Total Amount Spent: $INSERT AMOUNT</p>
+  </section>
+  <section class="manager-bookings-container">
+    <div class="bookings-card">
+      <ul>
+        <li>id: </li>
+        <li>roomNumber: </li>
+        <li>date: </li>
+        <li>roomType: </li>
+        <li>bidet: </li>
+        <li>bedSize: </li>
+        <li>numBeds: </li>
+        <li>costPerNight: </li>
+      </ul>
+    </div>
+  </section>
+  <aside>
+    <section class="add-booking">
+      <h4>Add a booking</h4>
+      <div class="add-booking-information">
+        <input type="text" name="date" placeholder="date" required />
+        <input type="text" name="roomType" placeholder="room type" required />
+        <input type="text" name="bidet" placeholder="bidet" required />
+        <input type="text" name="bedSize" placeholder="bed size" required />
+        <input type="text" name="numBeds" placeholder="number of beds" required />
+        <input type="text" name="costPerNight" placeholder="cost per night" required />
+        <button class="add-booking">Add</button>
+      </div>
+      <div class="delete-booking-information">
+        <input type="text" name="id" placeholder="id" required />
+        <button class="add-booking">Delete</button>
+      </div>
+    </section>
+  </aside> -->
+
+  <!-- customer dashboard -->
+  <!-- <section class="customer-dashboard-header">
+    <h3>Welcome INSERT NAME!</h3>
+    <p>Total Amount Spent: $INSERT AMOUNT</p>
+  </section>
+  <section class="customer-bookings-container">
+    <h3>Room Bookings</h3>
+    <div class="bookings-card">
+      <ul>
+        <li>date: </li>
+        <li>roomType: </li>
+        <li>bidet: </li>
+        <li>bedSize: </li>
+        <li>numBeds: </li>
+        <li>costPerNight: </li>
+      </ul>
+    </div>
+    <section class="calendar">
+      <h4>Book a Room</h4>
+      <label for="date">Choose a date</label>
+      <input id="date" type="date" name="date" />
+    </section>
+  </section> -->
+
+  <!-- customer rooms available page -->
+  <!-- <section class="customer-rooms-available-header">
+    <button class="back-button">Back</button>
+    <h3>Rooms Available on INSERT DATE</h3>
+    <label for="roomType">Filter by room type:</label>
+    <select id="tags" onchange="filterByRoomType()">
+      <option value="residential-suite">Residential Suite</option>
+      <option value="suite">Suite</option>
+      <option value="single-room">Single Room</option>
+      <option value="junior-suite">Junior Suite</option>
+    </select>
+  </section>
+  <section class="rooms-available-container">
+    <div class="bookings-card">
+      <ul>
+        <li>roomType: </li>
+        <li>bidet: </li>
+        <li>bedSize: </li>
+        <li>numBeds: </li>
+        <li>costPerNight: </li>
+      </ul>
+      <button class="book-button">Book</button>
+    </div>
+    <div class="error-message-for-date">
+      <h2>We're sorry, it looks like there aren't any rooms available for this date. Please choose a different date</h2>
+      <label for="date">Please pick a different date</label>
+      <input id="date" type="date" name="date" />
+    </div>
+    <div class="error-message-for-room-type">
+      <h2>We're sorry, it looks like there aren't any rooms available for room type. Please filter by a different room type</h2>
+    </div> -->
+
+
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  </body>
+</body>
+
 </html>
