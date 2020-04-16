@@ -1,14 +1,17 @@
 main {
   @include flexin(column);
+  display: flex;
   align-items: center;
   background-color: #fff;
   border-radius: 1em;
+  flex-grow: 1;
   height: 40em;
   justify-content: center;
   margin-top: 4em;
   padding: 50px 100px;
   width: 25em;
 }
+
 
 .login-title {
   margin-bottom: 50px;

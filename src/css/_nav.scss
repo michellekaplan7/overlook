@@ -1,0 +1,17 @@
+nav {
+width: 100vw;
+padding: 2em;
+background-color: white;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search {
+  border: 2px solid black;
+  padding: 1em;
+  width: 20em;
+}
