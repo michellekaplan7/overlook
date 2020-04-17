@@ -15,3 +15,17 @@ background-color: white;
   padding: 1em;
   width: 20em;
 }
+
+.logout {
+  background-color: lighten(#808080, 40%);
+  width: 6em;
+  height: 2em;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+
+  &:hover {
+    border: solid #000;
+    border-radius: 1em;
+  }
+}

@@ -21,4 +21,8 @@ beforeEach(() => {
     expect(guest.getFirstName()).to.equal("Leatha");
   })
 
+  it('should find the guests bookings', function() {
+    expect(guest.findMyBookings()).to.equal
+  })
+
 });
