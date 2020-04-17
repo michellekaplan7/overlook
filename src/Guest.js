@@ -9,6 +9,18 @@ class Guest {
     return firstName;
   }
 
+  findMyBookings() {
+
+  }
+
+  bookARoom() {
+
+  }
+
+  calculateTotalAmountSpent() {
+
+  }
+
 }
 
 export default Guest;
