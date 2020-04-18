@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Guest from '../src/Guest';
-import roomData from '../data/rooms-testData';
+import roomsData from '../data/rooms-testData';
 
 describe('Guest', function() {
   let guest;
@@ -60,7 +60,7 @@ beforeEach(() => {
   });
 
   it('should calculate the total amount spent', function() {
-    expect(guest.calculateTotalAmountSpent(roomData)).to.equal(857.73);
+    expect(guest.calculateTotalAmountSpent(roomsData)).to.equal(857.73);
   });
 
 

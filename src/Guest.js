@@ -11,7 +11,7 @@ class Guest {
   }
 
   addBooking() {
-    //call bookARoom() from ApiController class??
+    //call bookARoom(userID, date, roomNumber) from ApiController class??
   }
 
   calculateTotalAmountSpent(roomData) {

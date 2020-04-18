@@ -1,4 +1,4 @@
-const roomData = [
+const roomsData = [
   {
     "number": 1,
     "roomType": "residential suite",
@@ -201,4 +201,4 @@ const roomData = [
   }
 ]
 
-export default roomData;
+export default roomsData;
