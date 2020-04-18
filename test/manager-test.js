@@ -22,10 +22,11 @@ it("should have a username", function() {
 it("should be able to calculate the total revenue for todays date", function() {
   let todaysDate = "2020/02/03";
   expect(manager.calculateTotalRevenueForToday(bookingsData, roomsData, todaysDate)).to.eq(840.41)
-})
+});
 
 it("should be able to calculate the percentage of rooms occupied for todays date", function() {
   let todaysDate = "2020/02/03";
   expect(manager.calculatePercentageOfRoomsOccupiedForToday(bookingsData, roomsData, todaysDate)).to.eq(12)
-})
+});
+
 });
