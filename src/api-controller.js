@@ -18,37 +18,6 @@ class ApiController {
     return fetch(url).then(response => response.json());
   }
 
-  bookARoom(userID, date, roomNumber) {
-    let bookingObject = {
-      "userID": Number(userID),
-      "date": (date),
-      "roomNumber": Number(roomNumber),
-    }
-    let url = `${this.rootUrl}/bookings/bookings`;
-    return fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bookingObject),
-      })
-      .then(response => console.log(response.json()))
-      .catch(err => console.log(err.message));
-  }
-
-
-  deleteBooking(id) {
-    let deleteBookingObject = {
-      id: Number(id),
-    }
-    let url = `${this.rootUrl}/bookings/bookings`;
-    return fetch(url, {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(deleteBookingObject)
-    })
-      .catch(error => console.log(err.message));
-  }
 
 }
 
