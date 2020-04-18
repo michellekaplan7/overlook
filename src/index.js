@@ -3,9 +3,11 @@ import './css/base.scss';
 import ApiController from './api-controller';
 import domUpdates from './dom-updates.js';
 import Guest from './Guest.js';
+import Booking from './Booking.js'
 
 let api = new ApiController();
-let guest
+let guest = new Guest(guestData, bookingsData);
+let booking;
 
 
 const fetchData = () => {

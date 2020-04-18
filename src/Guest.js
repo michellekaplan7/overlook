@@ -2,7 +2,7 @@ class Guest {
   constructor(guestDetails, bookingsData) {
     this.id = guestDetails.id;
     this.name = guestDetails.name;
-    this.myBookings = this.findMyBookings(guestDetails, bookingsData)
+    this.myBookings = bookingsData;
   }
 
   getFirstName() {
@@ -10,34 +10,27 @@ class Guest {
     return firstName;
   }
 
-  findMyBookings(guestDetails, bookingsData) {
-    console.log('bookingsData', bookingsData)
-    let myBookings = [];
-
+  addBooking() {
+    //call bookARoom() from ApiController class??
   }
 
-  bookARoom() {
-
+  calculateTotalAmountSpent(roomData) {
+    return this.myBookings.map(booking => {
+      let cost;
+      roomData.forEach(room => {
+        if (booking.roomNumber === room.number) {
+          cost = room.costPerNight;
+        }
+      })
+      return cost;
+    })
+    .reduce((acc, cost) => {
+      acc += cost
+      return acc
+    }, 0)
   }
 
-  calculateTotalAmountSpent() {
-
-  }
-
-  filterByRoomType() {
-
-  }
 
 }
 
 export default Guest;
-
-
-// -Look into/iterate over bookings data, and
-// filter the current usersID, which is bookings.userID.
-// Then, grab that roomNumber, which is bookings.roomNumber
-// and iterate through the rooms data to find that associated
-// room number which is rooms.number.
-// -Then, display that room information (potentially without
-//   the number) and potentially pulling in the date for that
-//   room which is found in bookings at bookings.date.
