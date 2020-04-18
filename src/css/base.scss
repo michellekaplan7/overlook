@@ -1,6 +1,29 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'variables';
+@import 'login';
+@import 'nav';
+@import 'managerDashboard';
+@import 'managerBookings';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+  box-sizing: border-box;
+  font-family: $font;
+}
 
 body {
-  background-color: $primary-background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  // min-height: 100vh;
+  background: $body-background;
+  height: 100vh;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
 }

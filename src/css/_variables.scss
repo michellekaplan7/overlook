@@ -1,0 +1,22 @@
+$font: 'Roboto', sans-serif;
+
+$body-background: linear-gradient(
+  90deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(6, 215, 152, 1) 0%,
+  rgba(135, 219, 213, 1) 30%,
+  rgba(32, 204, 158, 1) 70%
+);
+
+$button-background: linear-gradient(
+  90deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(6, 215, 152, 1) 0%,
+  rgba(32, 204, 158, 1) 30%,
+  rgba(135, 219, 213, 1) 70%
+);
+
+@mixin flexin($direction) {
+  display: flex;
+  flex-direction: $direction;
+}

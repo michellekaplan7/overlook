@@ -1,13 +1,58 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import ApiController from './api-controller';
+import domUpdates from './dom-updates.js';
+import Guest from './Guest.js';
+import Booking from './Booking.js'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+let api = new ApiController();
+let guest = new Guest(guestData, bookingsData);
+let booking;
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+const fetchData = () => {
+  let bookingsData = api.getBookingsData();
+  let roomsData = api.getRoomsData();
+
+  Promise.all([bookingsData, roomsData])
+    .then(finalValues => {
+      let bookingsData = finalValues[0];
+      let roomsData = finalValues[1];
+      console.log(finalValues)
+    }).catch(error => console.log(error.message))
+}
+
+const fetchUsers = () => {
+  let guestData = api.getGuestsData();
+
+  Promise.resolve(guestData)
+  .then(data => {
+    console.log(data)
+  })
+}
+
+
+$('.sign-in-button').click(function() {
+  console.log($('#password').val())
+  if (($('#username').val()) === '' && ($('#password').val()) === '') {
+    domUpdates.displayEmptyFieldsErrorMessage()
+  } if (($('#username').val()) === '' && ($('#password').val())) {
+    domUpdates.displayMissingUsername()
+  } if (($('#username').val()) && ($('#password').val()) === '') {
+    domUpdates.displayMissingPassword()
+  } if (($('#username').val()) === 'manager' && ($('#password').val()) !== 'overlook2020') {
+    domUpdates.displayIncorrectEntry()
+  } if (($('#username').val()) !== 'manager' && ($('#password').val()) === 'overlook2020') {
+    domUpdates.displayIncorrectEntry()
+  } if (($('#username').val()) === 'manager' && ($('#password').val()) === 'overlook2020') {
+    domUpdates.displayManagerDashboard()
+    fetchData();
+  }
+});
+
+$('.logout').click(function() {
+    domUpdates.displayLogin();
+});
+
+
+fetchUsers()
