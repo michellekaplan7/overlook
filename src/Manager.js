@@ -8,7 +8,7 @@ class Manager {
     let deleteBookingObject = {
       id: Number(id),
     }
-    let url = `${this.rootUrl}/bookings/bookings`;
+    let url = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings';
     return fetch(url, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
@@ -23,7 +23,7 @@ class Manager {
       "date": (date),
       "roomNumber": Number(roomNumber),
     }
-    let url = `${this.rootUrl}/bookings/bookings`;
+    let url = 'https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings';
     return fetch(url, {
         method: 'POST',
         headers: {
