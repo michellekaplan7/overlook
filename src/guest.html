@@ -1,13 +1,65 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang=en-US">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-  </head>
-  <body>
-
-  </body>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A booking hotel site for the Overlook Hotel">
+  <title>Overlook Hotel</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1>Welcome To The Overlook Hotel</h1>
+    </div>
+    <button class="logout">Logout</button>
+  </nav>
+  <section>
+    <p class="customer-welcome">Hello Customer!</p>
+  </section>
+  <section class="booking-history-container">
+    <div class="booking-history-headers-container">
+      <p class="booking-history-header">Booking History</p>
+      <p class=booking-history-header>Total Amount Spent $</p>
+    </div>
+    <section class="customerview-booking-cards-container">
+      <div class="customerview-booking-card">
+        <p class="customerview-booking-card-info">Room Number: </p>
+        <p class="customerview-booking-card-info">Date: </p>
+      </div>
+    </section>
+  </section>
+  <section class="customerview-booking-container">
+    <div class="customerview-booking-headers-container">
+      <p class="book-a-room-header">Book a Room</p>
+      <div>
+        <label for="date">Select a date:</label>
+        <input id="date" type="date" name="date" />
+      </div>
+      <div>
+        <label for="roomtype-select">Filter by room type:</label>
+        <select name="roomtype" id="roomtype-select">
+          <option value="">--Please choose a room type--</option>
+          <option value="residential-suite">Residential Suite</option>
+          <option value="suite">Suite</option>
+          <option value="single-room">Single Room</option>
+          <option value="junior-suite">Junior Suite</option>
+        </select>
+      </div>
+    </div>
+    <section class="customerview-make-bookings-container">
+      <div class="customerview-room-details-card">
+        <p class="customerview-room-details-info">Room Number: </p>
+        <p class="customerview-room-details-info">Room Type: </p>
+        <p class="customerview-room-details-info">Bed Type: </p>
+        <p class="customerview-room-details-info">Number of Beds: </p>
+        <p class="customerview-room-details-info">Bidet: </p>
+        <p class="customerview-room-details-info">Cost Per Night: </p>
+        <div class="customerview-book-button-container">
+          <button class="customerview-book-button">BOOK</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</body>
 </html>

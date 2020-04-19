@@ -1,0 +1,60 @@
+.customer-welcome {
+  @extend .manager-welcome;
+}
+
+.booking-history-container {
+  @extend .customer-details-container;
+}
+
+.booking-history-headers-container {
+  // @include flexin(row);
+  // justify-content: space-around;
+  @extend .customer-booking-header;
+  @extend .customer-heading;
+  margin-top: 1em;
+}
+
+.customerview-booking-cards-container {
+  @extend .booking-cards-container;
+}
+
+.customerview-booking-card {
+  @extend .booking-card;
+}
+
+.customerview-booking-card-info {
+  @extend .booking-card-info;
+}
+
+.customerview-booking-container {
+  @extend .booking-container;
+}
+
+.customerview-booking-headers-container {
+  @extend .booking-headers-container;
+}
+
+.customerview-make-bookings-container {
+  @extend .make-delete-bookings-container;
+}
+
+.customerview-room-details-card {
+  @extend .room-details-card;
+}
+
+.customerview-room-details-info {
+  @extend .room-details-info;
+}
+
+.customerview-book-button-container {
+  @extend .book-button-container;
+}
+
+.customerview-book-button {
+  @extend .book-button;
+}
+
+.book-a-room-header {
+  font-size: 1.5em;
+  font-weight: 700;
+}

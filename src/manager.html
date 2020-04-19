@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A booking hotel site for the Overlook Hotel">
+  <title>Overlook Hotel</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1>Welcome To The Overlook Hotel</h1>
+      <input id="searchbar" class="search" type="text" name="search" placeholder="search guest name" />
+    </div>
+    <button class="logout">Logout</button>
+  </nav>
+  <section>
+    <div class="">
+      <p class="manager-welcome">Hello Manager!</p>
+  </section>
+  <section class="manager-dashboard-container">
+    <h3 class="todays-snapshot-title">Today's Snapshot</h3>
+    <div class="all-totals-container">
+      <div class="total-rooms-container">
+        <h4 class="totals-title">Total Rooms Available</h4>
+        <p class="totals">20</p>
+      </div>
+      <div class="total-revenue-container">
+        <h4 class="totals-title">Total Revenue</h4>
+        <p class="totals"></p>
+      </div>
+      <div class="percent-rooms-occupied-container">
+        <h4 class="totals-title">% of Rooms occupied</h4>
+        <p class="totals"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="customer-details-container">
+    <p class="customer-details">Customer Details</p>
+    <section class="customer-booking-history">
+      <div class="customer-booking-header">
+        <p class="customer-heading">Name</p>
+        <p class="customer-heading">Booking History</p>
+        <p class="customer-heading">Total Amount Spent $</p>
+      </div>
+    </section>
+    <section class="booking-cards-container">
+      <div class="booking-card">
+        <p class="booking-card-info">Room Number: </p>
+        <p class="booking-card-info">Date: </p>
+      </div>
+    </section>
+  </section>
+  <section class="booking-container">
+    <div class="booking-headers-container">
+      <button class="booking-header">Make a booking</button>
+      <button class="booking-header">Delete a booking</button>
+    </div>
+    <section class="make-delete-bookings-container">
+      <div class="room-details-card">
+        <p class="room-details-info">Room Number: </p>
+        <p class="room-details-info">Room Type: </p>
+        <p class="room-details-info">Bed Type: </p>
+        <p class="room-details-info">Number of Beds: </p>
+        <p class="room-details-info">Bidet: </p>
+        <p class="room-details-info">Cost Per Night: </p>
+        <div class="book-button-container">
+          <button class="book-button">BOOK</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</body>
+</html>

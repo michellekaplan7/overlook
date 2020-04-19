@@ -16,6 +16,8 @@ $button-background: linear-gradient(
   rgba(135, 219, 213, 1) 70%
 );
 
+$lightgrey: lighten(#808080, 40%);
+
 @mixin flexin($direction) {
   display: flex;
   flex-direction: $direction;
