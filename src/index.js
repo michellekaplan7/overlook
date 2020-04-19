@@ -1,58 +1,96 @@
 import $ from 'jquery';
-import './css/base.scss';
 import ApiController from './api-controller';
-import domUpdates from './dom-updates.js';
+import Hotel from './Hotel.js';
 import Guest from './Guest.js';
-import Booking from './Booking.js'
+import Manager from './Manager.js';
+import Booking from './Booking.js';
+import Room from './Room.js';
+import domUpdates from './dom-updates.js';
+
+import './css/base.scss';
 
 let api = new ApiController();
-let guest = new Guest(guestData, bookingsData);
-let booking;
+let guest;
+let manager;
+let hotel;
 
 
 const fetchData = () => {
-  let bookingsData = api.getBookingsData();
+  let guestsData = api.getGuestsData();
   let roomsData = api.getRoomsData();
+  let bookingsData = api.getBookingsData();
 
-  Promise.all([bookingsData, roomsData])
+  Promise.all([guestsData, roomsData, bookingsData])
     .then(finalValues => {
-      let bookingsData = finalValues[0];
-      let roomsData = finalValues[1];
+      hotel = new Hotel(new Date(), finalValues[0].users, finalValues[1].rooms, finalValues[2].bookings);
+      hotel.getTodaysDate();
+      console.log(hotel)
       console.log(finalValues)
+      if (document.location.pathname === '/guest.html') {
+        welcomeGuest();
+        domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
+      }
     }).catch(error => console.log(error.message))
+
 }
 
-const fetchUsers = () => {
-  let guestData = api.getGuestsData();
+// const fetchUsers = () => {
+//   let guestData = api.getGuestsData();
+//
+//   Promise.resolve(guestData)
+//   .then(data => {
+//     console.log(data)
+//   })
+// }
 
-  Promise.resolve(guestData)
-  .then(data => {
-    console.log(data)
-  })
-}
+//EVENT LISTENERS
+$('.sign-in-button').on('click', logIn);
+$('.logout').on('click', logOut);
 
-
-$('.sign-in-button').click(function() {
-  console.log($('#password').val())
-  if (($('#username').val()) === '' && ($('#password').val()) === '') {
-    domUpdates.displayEmptyFieldsErrorMessage()
-  } if (($('#username').val()) === '' && ($('#password').val())) {
-    domUpdates.displayMissingUsername()
-  } if (($('#username').val()) && ($('#password').val()) === '') {
-    domUpdates.displayMissingPassword()
-  } if (($('#username').val()) === 'manager' && ($('#password').val()) !== 'overlook2020') {
-    domUpdates.displayIncorrectEntry()
-  } if (($('#username').val()) !== 'manager' && ($('#password').val()) === 'overlook2020') {
-    domUpdates.displayIncorrectEntry()
-  } if (($('#username').val()) === 'manager' && ($('#password').val()) === 'overlook2020') {
-    domUpdates.displayManagerDashboard()
-    fetchData();
+function logIn() {
+  // event.preventDefault();
+  let arr = $('#username').val().split('r');
+  let guestID = Number(arr[1]);
+  if (guestID > 50) {
+    domUpdates.showLoginErrorMessage();
   }
-});
 
-$('.logout').click(function() {
-    domUpdates.displayLogin();
-});
+  else if ($('#username').val() === 'manager' && $('#password').val() === 'overlook2020') {
+    window.location = './manager.html';
+  } else if ($('#username').val().includes('customer') && $('#password').val() === 'overlook2020') {
+    storeIDLocalStorage();
+    window.location = './guest.html';
+
+  } else if (($('#username').val() !== 'manager' ||
+  $('#password').val() === 'overlook2020') ||
+  !$('#username').val().includes('customer')) {
+    $('#username').val('');
+    $('#password').val('');
+    domUpdates.showLoginErrorMessage();
+  }
+}
+
+function storeIDLocalStorage() {
+  let arr = $('#username').val().split('r');
+  let guestID = arr[1];
+  window.localStorage.setItem('id', guestID);
+}
 
 
-fetchUsers()
+function logOut() {
+  domUpdates.showLogIn();
+}
+
+function welcomeGuest() {
+  let guestID = Number(window.localStorage.getItem('id'));
+  let name = hotel.findCurrentGuest(guestID);
+  let obj = {
+    id: guestID,
+    name: name.name,
+  }
+  guest  = new Guest(obj, hotel.findGuestBookings(guestID));
+  $('.customer-welcome').text(`Welcome back ${guest.name}!`);
+}
+
+
+fetchData()

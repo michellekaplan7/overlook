@@ -1,34 +1,27 @@
 import $ from 'jquery'
+import Guest from './Guest.js'
 
 let domUpdates = {
-  displayEmptyFieldsErrorMessage() {
-    $('.login-error-message').text(`*Both fields are required*`)
+  showLoginErrorMessage() {
+    $('.login-error-message').text(`*Invalid login information. Please try again.*`)
   },
 
-  displayMissingPassword() {
-    $('.login-error-message').text(`*A password is required*`)
+  showLogIn() {
+    window.location = './index.html';
   },
 
-  displayMissingUsername() {
-    $('.login-error-message').text(`*A username is required*`)
+  displayGuestTotalAmounts(rooms, guest) {
+    $('#customerview-total-amount-spent').text(`Total Amount Spent $${guest.calculateTotalAmountSpent(rooms)}`)
   },
 
-  displayIncorrectEntry() {
-    $('.login-error-message').text(`*Either the username or password is incorrect. Please try again.*`)
-  },
-
-  // displayManagerDashboard() {
-  //   $('nav').removeClass('hidden');
-  //   $('.manager-dashboard-container').removeClass('hidden');
-  //   $('main').addClass('hidden');
-  // },
-
-  // displayLogin() {
-  //   $('nav').addClass('hidden');
-  //   $('.manager-dashboard-container').addClass('hidden');
-  //   $('main').addClass('main');
-  // }
 }
 
 
 export default domUpdates;
+
+
+// function getCustomerTotalAmountSpent(roomData) {
+//   console.log(total)
+//   let total = guest.calculateTotalAmountSpent(roomData)
+//   $('#customerview-total-amount-spent').text(`Total Amount Spent ${total}`)
+// }
