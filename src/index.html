@@ -10,7 +10,7 @@
 
 <body>
 
-  <nav class="hidden">
+  <nav>
     <div class="nav-container">
       <h1>Welcome To The Overlook Hotel</h1>
       <input id="searchbar" class="search" type="text" name="search" placeholder="search guest name" />
@@ -18,7 +18,7 @@
     <button class="logout">Logout</button>
   </nav>
 
-  <main>
+  <!-- <main>
       <h2 class="login-title">Login To Overlook</h2>
       <div class="login-items">
         <input id="username" type="text" name="username" placeholder="Username" required />
@@ -26,11 +26,17 @@
         <p class="login-error-message"></p>
         <button class="sign-in-button">Sign in</button>
       </div>
-  </main>
+  </main> -->
 
 
   <!-- manager dashboard -->
-  <section class="manager-dashboard-container hidden">
+  <section>
+    <div class="">
+      <p class="manager-welcome">Hello Manager!</p>
+    </div>
+
+  </section>
+  <section class="manager-dashboard-container">
     <h3 class="todays-snapshot-title">Today's Snapshot</h3>
     <div class="all-totals-container">
       <div class="total-rooms-container">
@@ -46,6 +52,43 @@
         <p class="totals"></p>
       </div>
     </div>
+  </section>
+
+  <section class="customer-details-container">
+    <p class="customer-details">Customer Details</p>
+    <section class="customer-booking-history">
+      <div class="customer-booking-header">
+        <p class="customer-heading">Name</p>
+        <p class="customer-heading">Booking History</p>
+        <p class="customer-heading">Total Amount Spent $</p>
+      </div>
+    </section>
+    <section class="booking-cards-container">
+      <div class="booking-card">
+        <p class="booking-card-info">Room Number: </p>
+        <p class="booking-card-info">Date: </p>
+      </div>
+    </section>
+  </section>
+
+  <section class="booking-container">
+    <div class="booking-headers-container">
+      <button class="booking-header">Make a booking</button>
+      <button class="booking-header">Delete a booking</button>
+    </div>
+    <section class="make-delete-bookings-container">
+      <div class="room-details-card">
+        <p class="room-details-info">Room Number: </p>
+        <p class="room-details-info">Room Type: </p>
+        <p class="room-details-info">Bed Type: </p>
+        <p class="room-details-info">Number of Beds: </p>
+        <p class="room-details-info">Bidet: </p>
+        <p class="room-details-info">Cost Per Night: </p>
+        <div class="book-button-container">
+          <button class="book-button">BOOK</button>
+        </div>
+      </div>
+    </section>
   </section>
 
   <!-- manager search results page -->

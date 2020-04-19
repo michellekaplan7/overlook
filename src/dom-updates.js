@@ -17,11 +17,11 @@ let domUpdates = {
     $('.login-error-message').text(`*Either the username or password is incorrect. Please try again.*`)
   },
 
-  displayManagerDashboard() {
-    $('nav').removeClass('hidden');
-    $('.manager-dashboard-container').removeClass('hidden');
-    $('main').addClass('hidden');
-  },
+  // displayManagerDashboard() {
+  //   $('nav').removeClass('hidden');
+  //   $('.manager-dashboard-container').removeClass('hidden');
+  //   $('main').addClass('hidden');
+  // },
 
   // displayLogin() {
   //   $('nav').addClass('hidden');

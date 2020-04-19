@@ -2,7 +2,7 @@
   background-color: #fff;
   border: 3px solid #000;
   flex-direction: column;
-  margin-top: 3em;
+  margin-top: 1em;
   width: 82vw;
 }
 
@@ -15,14 +15,15 @@
 .all-totals-container {
   display: flex;
   flex-direction: row;
-  height: 24em;
+  height: 13em;
   justify-content: space-evenly;
 }
 
 .percent-rooms-occupied-container {
-  background-color: lighten(#808080, 40%);
-  height: 20em;
+  background-color: $lightgrey;
+  height: 10em;
   width: 20em;
+  border: 1px solid black;
 }
 
 .total-revenue-container {
@@ -43,5 +44,110 @@
   display: flex;
   font-size: 4em;
   justify-content: center;
+}
+
+.manager-welcome {
+  font-size: 2em;
+  font-weight: 700;
   margin-top: 1em;
+}
+
+.customer-details {
+  font-size: 2em;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+.customer-details-container {
+  @extend .manager-dashboard-container;
+}
+
+
+.customer-booking-header {
+  @include flexin(row);
+  justify-content: space-around;
+}
+
+.booking-cards-container {
+  height: 25em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: scroll;
+}
+
+.booking-card {
+  border: 1px solid black;
+  width: 40em;
+  height: 4em;
+  margin-top: 2em;
+  padding: 0.6em;
+  background-color: $lightgrey;
+}
+
+.booking-card-info {
+  display: flex;
+  justify-content: center;
+}
+
+.customer-heading {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.booking-container {
+  @extend .manager-dashboard-container;
+}
+
+.booking-headers-container {
+  @extend .booking-card-info;
+  justify-content: space-around;
+  margin: 1em 0;
+}
+
+.booking-header {
+  @extend .customer-heading;
+  @extend .book-button;
+}
+
+.make-delete-bookings-container {
+  @extend .booking-cards-container;
+  overflow: scroll;
+}
+
+.room-details-card {
+  border: 1px solid black;
+  width: 40em;
+  height: 15em;
+  margin-top: 2em;
+  padding: 1em;
+  background-color: #e6e6e6;
+}
+
+.room-details-info {
+  padding: 0.3em;
+}
+
+.book-button {
+  background-color: #7fffd4;
+  width: 10em;
+  height: 3em;
+  border: 1px solid black;
+  border-radius: 1em;
+  font-size: 0.8em;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    border: solid #000;
+    border-radius: 1em;
+    background-color: darken(#7fffd4, 30%);
+  }
+}
+
+.book-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
