@@ -16,6 +16,8 @@
 
 .customerview-booking-cards-container {
   @extend .booking-cards-container;
+  flex-direction: column;
+  padding: 30em;
 }
 
 .customerview-booking-card {

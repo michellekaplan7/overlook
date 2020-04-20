@@ -29,28 +29,24 @@ const fetchData = () => {
       if (document.location.pathname === '/guest.html') {
         welcomeGuest();
         domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
+        getGuestBookingHistory()
       }
     }).catch(error => console.log(error.message))
 
 }
 
-// const fetchUsers = () => {
-//   let guestData = api.getGuestsData();
-//
-//   Promise.resolve(guestData)
-//   .then(data => {
-//     console.log(data)
-//   })
-// }
 
 //EVENT LISTENERS
 $('.sign-in-button').on('click', logIn);
 $('.logout').on('click', logOut);
 
+
 function logIn() {
   // event.preventDefault();
   let arr = $('#username').val().split('r');
+  console.log(arr)
   let guestID = Number(arr[1]);
+
   if (guestID > 50) {
     domUpdates.showLoginErrorMessage();
   }
@@ -89,8 +85,29 @@ function welcomeGuest() {
     name: name.name,
   }
   guest  = new Guest(obj, hotel.findGuestBookings(guestID));
-  $('.customer-welcome').text(`Welcome back ${guest.name}!`);
+  console.log('guest', guest)
+  console.log('guest.myBookings', guest.myBookings)
+
+  domUpdates.displayGuestNameWelcome(guest);
 }
+
+function getGuestBookingHistory() {
+  const result = guest.myBookings.map(booking => {
+    let bookedHistory = {};
+    bookedHistory.roomNumber = booking.roomNumber;
+    bookedHistory.date = booking.date;
+    return bookedHistory
+  })
+  result.forEach(booking => {
+    $('.customerview-booking-cards-container').append(
+      `<div class="customerview-booking-card">
+      <p class="customerview-booking-card-info">Room Number: ${booking.roomNumber} </p>
+      <p class="customerview-booking-card-info">Date: ${booking.date} </p>
+      </div>`
+    )
+  })
+}
+
 
 
 fetchData()
