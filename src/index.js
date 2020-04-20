@@ -24,12 +24,19 @@ const fetchData = () => {
     .then(finalValues => {
       hotel = new Hotel(new Date(), finalValues[0].users, finalValues[1].rooms, finalValues[2].bookings);
       hotel.getTodaysDate();
+      // getDateFromCalendarInput();
       console.log(hotel)
       console.log(finalValues)
       if (document.location.pathname === '/guest.html') {
         welcomeGuest();
         domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
-        getGuestBookingHistory()
+        getGuestBookingHistory();
+
+      } else if (document.location.pathname === '/manager.html') {
+        welcomeManager();
+        getKPIs();
+
+        // displayDashboardInfo();
       }
     }).catch(error => console.log(error.message))
 
@@ -77,6 +84,8 @@ function logOut() {
   domUpdates.showLogIn();
 }
 
+//------------------------GUEST DASHBOARD------------------------------------
+
 function welcomeGuest() {
   let guestID = Number(window.localStorage.getItem('id'));
   let name = hotel.findCurrentGuest(guestID);
@@ -108,6 +117,37 @@ function getGuestBookingHistory() {
   })
 }
 
+// function getDateFromCalendarInput() {
+//   $('#date').val(hotel.date.split('/').join('-'));
+// }
+
+//------------------------MANAGER DASHBOARD------------------------------------
+
+function welcomeManager() {
+  manager = new Manager();
+  domUpdates.displayManagerNameWelcome(manager);
+}
+
+function getKPIs() {
+  getTodaysRevenue();
+  getPercentageRoomsOccupied();
+  getRoomsAvailable();
+}
+
+function getTodaysRevenue() {
+  let revenue = manager.calculateTotalRevenueForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(2);
+  domUpdates.displayRevenue(revenue);
+}
+
+function getPercentageRoomsOccupied() {
+  let percentOccupied = manager.calculatePercentageOfRoomsOccupiedForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(0);
+  domUpdates.displayPercentageRoomsOccupied(percentOccupied);
+}
+
+function getRoomsAvailable() {
+  let roomsAvailable = hotel.findRoomsAvailableByDate().length;
+  domUpdates.displayRoomsAvailable(roomsAvailable);
+}
 
 
 fetchData()
