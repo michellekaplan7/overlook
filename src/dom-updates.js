@@ -37,6 +37,10 @@ let domUpdates = {
 
   displayRoomsAvailableByDateSelected(searchedRooms) {
     $('.customerview-make-bookings-container').html('')
+    if (searchedRooms.length === 0) {
+        $('.customerview-make-bookings-container').prepend(`<p class="search-error-message">We're sorry, there are no rooms available for these search parameters. Please adjust your room search.</p>`);
+        return
+    }
     searchedRooms.forEach(room => {
       $('.customerview-make-bookings-container').append(
         `<div data-id="${room.number}" class="customerview-room-details-card">
@@ -51,9 +55,12 @@ let domUpdates = {
         </div>
         </div>`
       )
-      // $('.customerview-book-button').on('click', guestAddBooking);
     })
   },
+
+  // displaySearchErrorMessage() {
+  //   $('.search-error-message').removeClass('hidden');
+  // },
 
 }
 

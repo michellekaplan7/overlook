@@ -36,7 +36,6 @@ const fetchData = () => {
         welcomeManager();
         getKPIs();
 
-        // displayDashboardInfo();
       }
     }).catch(error => console.log(error.message))
 
@@ -123,6 +122,9 @@ function getGuestBookingHistory() {
 function searchRooms() {
   let selectedDate = $('#date').val().split('-').join('/')
   let availableRoomsByDate = hotel.findRoomsAvailableByDate(selectedDate, hotel.rooms, hotel.bookings)
+  // if (availableRoomsByDate === []) {
+  //   domUpdates.displaySearchErrorMessage();
+  // }
   console.log('selected date', selectedDate)
   console.log('ROOMS', availableRoomsByDate)
 
@@ -135,7 +137,11 @@ function filterRoomResults() {
   let availableRoomsByDate = searchRooms()
   let filterType = $('#roomtype-select').val().split('-').join(' ')
   let filteredRooms = availableRoomsByDate.filter(room => room.roomType === filterType)
+  console.log(filteredRooms)
   domUpdates.displayRoomsAvailableByDateSelected(filteredRooms);
+  // if (filteredRooms === []) {
+  //   domUpdates.displaySearchErrorMessage();
+  // }
   $('.customerview-book-button').on('click', guestAddBooking);
 }
 
