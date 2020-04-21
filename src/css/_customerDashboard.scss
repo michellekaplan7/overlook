@@ -35,6 +35,7 @@
 
 .customerview-booking-container {
   @extend .booking-container;
+  display: flex;
 }
 
 .customerview-booking-headers-container {
@@ -42,7 +43,10 @@
 }
 
 .customerview-make-bookings-container {
-  @extend .make-delete-bookings-container;
+  height: 25em;
+  flex-direction: row;
+  justify-content: center;
+  overflow: scroll;
 }
 
 .customerview-room-details-card {
@@ -64,4 +68,23 @@
 .book-a-room-header {
   font-size: 1.5em;
   font-weight: 700;
+}
+
+.submit-date {
+  background-color: lighten(#808080, 40%);
+  width: 11em;
+  height: 2em;
+  border: none;
+  border-radius: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:hover {
+    border: solid #000;
+    border-radius: 1em;
+  }
+}
+
+.submit-filter {
+  @extend .submit-date;
 }

@@ -34,21 +34,24 @@
       <p class="book-a-room-header">Book a Room</p>
       <div>
         <label for="date">Select a date:</label>
-        <input id="date" type="date" name="date" required pattern="\d{4}-\d{2}-\d{2}" />
+        <input id="date" type="date" name="date" required/>
+        <button class="submit-date">Search for a room</button>
       </div>
       <div>
         <label for="roomtype-select">Filter by room type:</label>
         <select name="roomtype" id="roomtype-select">
           <option value="">--Please choose a room type--</option>
-          <option value="residential-suite">Residential Suite</option>
-          <option value="suite">Suite</option>
-          <option value="single-room">Single Room</option>
-          <option value="junior-suite">Junior Suite</option>
+          <option value="residential-suite">residential suite</option>
+          <option value="suite">suite</option>
+          <option value="single-room">single room</option>
+          <option value="junior-suite">junior suite</option>
         </select>
+        <button class="submit-filter">Filter room results</button>
       </div>
+
     </div>
     <section class="customerview-make-bookings-container">
-      <div class="customerview-room-details-card">
+      <!-- <div class="customerview-room-details-card">
         <p class="customerview-room-details-info">Room Number: </p>
         <p class="customerview-room-details-info">Room Type: </p>
         <p class="customerview-room-details-info">Bed Type: </p>
@@ -58,7 +61,7 @@
         <div class="customerview-book-button-container">
           <button class="customerview-book-button">BOOK</button>
         </div>
-      </div>
+      </div> -->
     </section>
   </section>
 </body>

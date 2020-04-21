@@ -46,6 +46,9 @@ const fetchData = () => {
 //EVENT LISTENERS
 $('.sign-in-button').on('click', logIn);
 $('.logout').on('click', logOut);
+$('.submit-date').on('click', searchRooms);
+$('.submit-filter').on('click', filterRoomResults);
+
 
 
 function logIn() {
@@ -117,6 +120,36 @@ function getGuestBookingHistory() {
   })
 }
 
+function searchRooms() {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let availableRoomsByDate = hotel.findRoomsAvailableByDate(selectedDate, hotel.rooms, hotel.bookings)
+  console.log('selected date', selectedDate)
+  console.log('ROOMS', availableRoomsByDate)
+
+  domUpdates.displayRoomsAvailableByDateSelected(availableRoomsByDate);
+  $('.customerview-book-button').on('click', guestAddBooking);
+  return availableRoomsByDate
+}
+
+function filterRoomResults() {
+  let availableRoomsByDate = searchRooms()
+  let filterType = $('#roomtype-select').val().split('-').join(' ')
+  let filteredRooms = availableRoomsByDate.filter(room => room.roomType === filterType)
+  domUpdates.displayRoomsAvailableByDateSelected(filteredRooms);
+  $('.customerview-book-button').on('click', guestAddBooking);
+}
+
+
+function guestAddBooking(e) {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let roomNumber = e.target.parentNode.parentNode.dataset.id
+  // console.log(roomNumber)
+  // console.log(typeof roomNumber);
+  guest.bookARoom(guest.id, selectedDate, roomNumber)
+  e.target.parentNode.parentNode.remove()
+}
+
+
 // function getDateFromCalendarInput() {
 //   $('#date').val(hotel.date.split('/').join('-'));
 // }
@@ -146,8 +179,10 @@ function getPercentageRoomsOccupied() {
 
 function getRoomsAvailable() {
   let roomsAvailable = hotel.findRoomsAvailableByDate().length;
-  domUpdates.displayRoomsAvailable(roomsAvailable);
+  domUpdates.displayNumberOfRoomsAvailable(roomsAvailable);
 }
+
+
 
 
 fetchData()
