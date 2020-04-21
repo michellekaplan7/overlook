@@ -24,33 +24,38 @@ const fetchData = () => {
     .then(finalValues => {
       hotel = new Hotel(new Date(), finalValues[0].users, finalValues[1].rooms, finalValues[2].bookings);
       hotel.getTodaysDate();
+      // getDateFromCalendarInput();
       console.log(hotel)
       console.log(finalValues)
       if (document.location.pathname === '/guest.html') {
         welcomeGuest();
         domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
+        getGuestBookingHistory();
+
+      } else if (document.location.pathname === '/manager.html') {
+        welcomeManager();
+        getKPIs();
+
       }
     }).catch(error => console.log(error.message))
 
 }
 
-// const fetchUsers = () => {
-//   let guestData = api.getGuestsData();
-//
-//   Promise.resolve(guestData)
-//   .then(data => {
-//     console.log(data)
-//   })
-// }
 
 //EVENT LISTENERS
 $('.sign-in-button').on('click', logIn);
 $('.logout').on('click', logOut);
+$('.submit-date').on('click', searchRooms);
+$('.submit-filter').on('click', filterRoomResults);
+
+
 
 function logIn() {
   // event.preventDefault();
   let arr = $('#username').val().split('r');
+  console.log(arr)
   let guestID = Number(arr[1]);
+
   if (guestID > 50) {
     domUpdates.showLoginErrorMessage();
   }
@@ -81,6 +86,8 @@ function logOut() {
   domUpdates.showLogIn();
 }
 
+//------------------------GUEST DASHBOARD------------------------------------
+
 function welcomeGuest() {
   let guestID = Number(window.localStorage.getItem('id'));
   let name = hotel.findCurrentGuest(guestID);
@@ -89,8 +96,99 @@ function welcomeGuest() {
     name: name.name,
   }
   guest  = new Guest(obj, hotel.findGuestBookings(guestID));
-  $('.customer-welcome').text(`Welcome back ${guest.name}!`);
+  console.log('guest', guest)
+  console.log('guest.myBookings', guest.myBookings)
+
+  domUpdates.displayGuestNameWelcome(guest);
 }
+
+function getGuestBookingHistory() {
+  const result = guest.myBookings.map(booking => {
+    let bookedHistory = {};
+    bookedHistory.roomNumber = booking.roomNumber;
+    bookedHistory.date = booking.date;
+    return bookedHistory
+  })
+  result.forEach(booking => {
+    $('.customerview-booking-cards-container').append(
+      `<div class="customerview-booking-card">
+      <p class="customerview-booking-card-info">Room Number: ${booking.roomNumber} </p>
+      <p class="customerview-booking-card-info">Date: ${booking.date} </p>
+      </div>`
+    )
+  })
+}
+
+function searchRooms() {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let availableRoomsByDate = hotel.findRoomsAvailableByDate(selectedDate, hotel.rooms, hotel.bookings)
+  // if (availableRoomsByDate === []) {
+  //   domUpdates.displaySearchErrorMessage();
+  // }
+  console.log('selected date', selectedDate)
+  console.log('ROOMS', availableRoomsByDate)
+
+  domUpdates.displayRoomsAvailableByDateSelected(availableRoomsByDate);
+  $('.customerview-book-button').on('click', guestAddBooking);
+  return availableRoomsByDate
+}
+
+function filterRoomResults() {
+  let availableRoomsByDate = searchRooms()
+  let filterType = $('#roomtype-select').val().split('-').join(' ')
+  let filteredRooms = availableRoomsByDate.filter(room => room.roomType === filterType)
+  console.log(filteredRooms)
+  domUpdates.displayRoomsAvailableByDateSelected(filteredRooms);
+  // if (filteredRooms === []) {
+  //   domUpdates.displaySearchErrorMessage();
+  // }
+  $('.customerview-book-button').on('click', guestAddBooking);
+}
+
+
+function guestAddBooking(e) {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let roomNumber = e.target.parentNode.parentNode.dataset.id
+  // console.log(roomNumber)
+  // console.log(typeof roomNumber);
+  guest.bookARoom(guest.id, selectedDate, roomNumber)
+  e.target.parentNode.parentNode.remove()
+}
+
+
+// function getDateFromCalendarInput() {
+//   $('#date').val(hotel.date.split('/').join('-'));
+// }
+
+//------------------------MANAGER DASHBOARD------------------------------------
+
+function welcomeManager() {
+  manager = new Manager();
+  domUpdates.displayManagerNameWelcome(manager);
+}
+
+function getKPIs() {
+  getTodaysRevenue();
+  getPercentageRoomsOccupied();
+  getRoomsAvailable();
+}
+
+function getTodaysRevenue() {
+  let revenue = manager.calculateTotalRevenueForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(2);
+  domUpdates.displayRevenue(revenue);
+}
+
+function getPercentageRoomsOccupied() {
+  let percentOccupied = manager.calculatePercentageOfRoomsOccupiedForToday(hotel.bookings, hotel.rooms, hotel.date).toFixed(0);
+  domUpdates.displayPercentageRoomsOccupied(percentOccupied);
+}
+
+function getRoomsAvailable() {
+  let roomsAvailable = hotel.findRoomsAvailableByDate().length;
+  domUpdates.displayNumberOfRoomsAvailable(roomsAvailable);
+}
+
+
 
 
 fetchData()

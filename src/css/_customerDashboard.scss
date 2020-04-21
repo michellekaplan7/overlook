@@ -3,19 +3,26 @@
 }
 
 .booking-history-container {
-  @extend .customer-details-container;
+  background-color: #fff;
+  border: 3px solid #000;
+  flex-direction: column;
+  margin-top: 1em;
+  width: 82vw;
+  display: flex;
 }
 
 .booking-history-headers-container {
-  // @include flexin(row);
-  // justify-content: space-around;
   @extend .customer-booking-header;
   @extend .customer-heading;
   margin-top: 1em;
 }
 
 .customerview-booking-cards-container {
-  @extend .booking-cards-container;
+  height: 25em;
+  justify-content: center;
+  flex-direction: column;
+  overflow: scroll;
+
 }
 
 .customerview-booking-card {
@@ -28,6 +35,7 @@
 
 .customerview-booking-container {
   @extend .booking-container;
+  display: flex;
 }
 
 .customerview-booking-headers-container {
@@ -35,7 +43,10 @@
 }
 
 .customerview-make-bookings-container {
-  @extend .make-delete-bookings-container;
+  height: 25em;
+  flex-direction: row;
+  justify-content: center;
+  overflow: scroll;
 }
 
 .customerview-room-details-card {
@@ -57,4 +68,33 @@
 .book-a-room-header {
   font-size: 1.5em;
   font-weight: 700;
+}
+
+.submit-date {
+  background-color: lighten(#808080, 40%);
+  width: 11em;
+  height: 2em;
+  border: none;
+  border-radius: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:hover {
+    border: solid #000;
+    border-radius: 1em;
+  }
+}
+
+.submit-filter {
+  @extend .submit-date;
+}
+
+
+.search-error-message {
+  display: flex;
+  justify-content: center;
+  color: #FF0000;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-top: 3em;
 }
