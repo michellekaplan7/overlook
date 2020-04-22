@@ -62,6 +62,7 @@
 
 .customer-details-container {
   @extend .manager-dashboard-container;
+  display: flex;
 }
 
 
@@ -72,16 +73,13 @@
 
 .booking-cards-container {
   height: 25em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   overflow: scroll;
 }
 
 .booking-card {
   border: 1px solid black;
   width: 40em;
-  height: 4em;
+  height: 5em;
   margin-top: 2em;
   padding: 0.6em;
   background-color: $lightgrey;
@@ -107,15 +105,15 @@
   margin: 1em 0;
 }
 
-.booking-header {
-  @extend .customer-heading;
-  @extend .book-button;
-}
+// .booking-header {
+//   @extend .customer-heading;
+//   @extend .book-button;
+// }
 
-.make-delete-bookings-container {
-  @extend .booking-cards-container;
-  overflow: scroll;
-}
+// .make-delete-bookings-container {
+//   @extend .booking-cards-container;
+//   overflow: scroll;
+// }
 
 .room-details-card {
   border: 1px solid black;
@@ -151,3 +149,60 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.manager-search-error-message {
+  @extend .search-error-message;
+}
+
+.search-guest-button {
+  @extend .logout;
+}
+
+//----------
+// .managerview-booking-container {
+//   @extend .customerview-booking-container;
+// }
+//
+// .managerview-booking-headers-container {
+//   @extend .customerview-booking-headers-container;
+// }
+//
+// .managerview-book-a-room-header {
+//   @extend .book-a-room-header;
+// }
+//
+// .managerview-make-bookings-container {
+//   @extend .customerview-make-bookings-container;
+// }
+//
+// .managerview-room-details-card {
+//   @extend .customerview-room-details-card;
+// }
+//
+// .managerview-room-details-info {
+//   @extend .customerview-room-details-info;
+// }
+//
+// .managerview-book-button-container {
+//   @extend .customerview-book-button-container;
+// }
+//
+// .managerview-book-button {
+//   @extend .customerview-book-button;
+// }
+//
+// .delete-booking-button {
+//   @extend .submit-date;
+// }
+//
+// .manager-delete-booking-container {
+//   @extend .managerview-make-bookings-container;
+// }
+//
+// .delete-form-container {
+//   @extend .managerview-room-details-card;
+// }
+//
+// .delete-booking-button {
+//   @extend .book-button;
+// }

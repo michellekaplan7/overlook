@@ -11,7 +11,10 @@
   <nav>
     <div class="nav-container">
       <h1>Welcome To The Overlook Hotel</h1>
-      <input id="searchbar" class="search" type="text" name="search" placeholder="search guest name" />
+      <div class="search-container">
+        <input id="searchbar" class="search" type="text" name="search" placeholder="search guest name" />
+        <button class="search-guest-button" type="button">Search</button>
+      </div>
     </div>
     <button class="logout">Logout</button>
   </nav>
@@ -40,37 +43,71 @@
   <section class="customer-details-container">
     <p class="customer-details">Customer Details</p>
     <section class="customer-booking-history">
-      <div class="customer-booking-header">
+      <!-- <div class="customer-booking-header">
         <p class="customer-heading">Name</p>
         <p class="customer-heading">Booking History</p>
         <p class="customer-heading">Total Amount Spent $</p>
-      </div>
+      </div> -->
     </section>
     <section class="booking-cards-container">
-      <div class="booking-card">
+      <!-- <div class="booking-card">
+        <p class="booking-card-info">Booking ID: </p>
         <p class="booking-card-info">Room Number: </p>
         <p class="booking-card-info">Date: </p>
-      </div>
+      </div> -->
     </section>
   </section>
+
   <section class="booking-container">
     <div class="booking-headers-container">
-      <button class="booking-header">Make a booking</button>
-      <button class="booking-header">Delete a booking</button>
+      <p class="book-a-room-header">Book a Room</p>
+      <div>
+        <label for="date">Select a date:</label>
+        <input id="date" type="date" name="date" required/>
+        <button class="submit-date">Search for a room</button>
+      </div>
+      <div>
+        <label for="roomtype-select">Filter by room type:</label>
+        <select name="roomtype" id="roomtype-select">
+          <option value="">--Please choose a room type--</option>
+          <option value="residential-suite">residential suite</option>
+          <option value="suite">suite</option>
+          <option value="single-room">single room</option>
+          <option value="junior-suite">junior suite</option>
+        </select>
+        <button class="submit-filter">Filter room results</button>
+      </div>
+      <button class="delete-booking-button" type="button">Delete a booking</button>
+
     </div>
-    <section class="make-delete-bookings-container">
-      <div class="room-details-card">
-        <p class="room-details-info">Room Number: </p>
-        <p class="room-details-info">Room Type: </p>
-        <p class="room-details-info">Bed Type: </p>
-        <p class="room-details-info">Number of Beds: </p>
-        <p class="room-details-info">Bidet: </p>
-        <p class="room-details-info">Cost Per Night: </p>
-        <div class="book-button-container">
-          <button class="book-button">BOOK</button>
+    <section class="make-bookings-container">
+      <!-- <p class="search-error-message"></p> -->
+      <!-- <p class="search-error-message hidden">We're sorry, there are no rooms available for these search parameters. Please adjust your room search.</p>
+      <div class="managerview-room-details-card">
+        <p class="managerview-room-details-info">Room Number: </p>
+        <p class="managerview-room-details-info">Room Type: </p>
+        <p class="managerview-room-details-info">Bed Type: </p>
+        <p class="managerview-room-details-info">Number of Beds: </p>
+        <p class="managerview-room-details-info">Bidet: </p>
+        <p class="managerview-room-details-info">Cost Per Night: </p>
+        <div class="managerview-book-button-container">
+          <button type="button" class="managerview-book-button">BOOK</button>
         </div>
+      </div> -->
+    </section>
+
+    <section class="manager-delete-booking-container hidden">
+      <div class="delete-form-container">
+        <form>
+          <p>Please enter the booking id to delete a booking.</p>
+          <label for="booking-id">Booking ID: </label>
+          <input type="text" name="booking-id" placeholder="booking id">
+          <button class="delete-booking-button" type="button">Delete</button>
+        </form>
       </div>
     </section>
   </section>
+
+
 </body>
 </html>

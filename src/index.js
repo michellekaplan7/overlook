@@ -31,11 +31,10 @@ const fetchData = () => {
         welcomeGuest();
         domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
         getGuestBookingHistory();
-
       } else if (document.location.pathname === '/manager.html') {
         welcomeManager();
         getKPIs();
-
+        getGuestInfo();
       }
     }).catch(error => console.log(error.message))
 
@@ -47,6 +46,7 @@ $('.sign-in-button').on('click', logIn);
 $('.logout').on('click', logOut);
 $('.submit-date').on('click', searchRooms);
 $('.submit-filter').on('click', filterRoomResults);
+$('.search-guest-button').on('click', getGuestInfo);
 
 
 
@@ -105,6 +105,7 @@ function welcomeGuest() {
 function getGuestBookingHistory() {
   const result = guest.myBookings.map(booking => {
     let bookedHistory = {};
+    bookedHistory.id = booking.id;
     bookedHistory.roomNumber = booking.roomNumber;
     bookedHistory.date = booking.date;
     return bookedHistory
@@ -112,6 +113,7 @@ function getGuestBookingHistory() {
   result.forEach(booking => {
     $('.customerview-booking-cards-container').append(
       `<div class="customerview-booking-card">
+      <p class="customerview-booking-card-info">Booking ID: ${booking.id} </p>
       <p class="customerview-booking-card-info">Room Number: ${booking.roomNumber} </p>
       <p class="customerview-booking-card-info">Date: ${booking.date} </p>
       </div>`
@@ -122,14 +124,16 @@ function getGuestBookingHistory() {
 function searchRooms() {
   let selectedDate = $('#date').val().split('-').join('/')
   let availableRoomsByDate = hotel.findRoomsAvailableByDate(selectedDate, hotel.rooms, hotel.bookings)
-  // if (availableRoomsByDate === []) {
-  //   domUpdates.displaySearchErrorMessage();
-  // }
+
   console.log('selected date', selectedDate)
   console.log('ROOMS', availableRoomsByDate)
 
   domUpdates.displayRoomsAvailableByDateSelected(availableRoomsByDate);
-  $('.customerview-book-button').on('click', guestAddBooking);
+  if (document.location.pathname === '/guest.html') {
+    $('.book-button').on('click', guestAddBooking);
+  } else {
+    $('.book-button').on('click', managerAddBooking);
+  }
   return availableRoomsByDate
 }
 
@@ -139,10 +143,11 @@ function filterRoomResults() {
   let filteredRooms = availableRoomsByDate.filter(room => room.roomType === filterType)
   console.log(filteredRooms)
   domUpdates.displayRoomsAvailableByDateSelected(filteredRooms);
-  // if (filteredRooms === []) {
-  //   domUpdates.displaySearchErrorMessage();
-  // }
-  $('.customerview-book-button').on('click', guestAddBooking);
+  if (document.location.pathname === '/guest.html') {
+    $('.book-button').on('click', guestAddBooking);
+  } else {
+    $('.book-button').on('click', managerAddBooking);
+  }
 }
 
 
@@ -187,6 +192,65 @@ function getRoomsAvailable() {
   let roomsAvailable = hotel.findRoomsAvailableByDate().length;
   domUpdates.displayNumberOfRoomsAvailable(roomsAvailable);
 }
+
+
+function getGuestInfo() {
+  let searchedName = $('#searchbar').val().toLowerCase();
+  let matchedName = hotel.guests.find(user => {
+    let foundUser;
+    if (user.name.toLowerCase().split(' ')[0] === searchedName) {
+      foundUser = user;
+    } else if (user.name.toLowerCase().split(' ')[1] === searchedName) {
+      foundUser = user;
+    }
+    return foundUser;
+  })
+  let matchedNameID = matchedName.id;
+  let matchedNameBookings = hotel.findGuestBookings(matchedNameID);
+
+  guest = new Guest({id: matchedNameID, name: matchedName.name}, matchedNameBookings)
+  console.log(guest);
+  $('.customer-details').attr('data-id', guest.id)
+  domUpdates.displaySearchedGuestInfo(guest, hotel.rooms);
+  domUpdates.displaySearchedGuestBookings(guest)
+  return guest;
+}
+
+
+
+
+function managerSearchRooms() {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let availableRoomsByDate = hotel.findRoomsAvailableByDate(selectedDate, hotel.rooms, hotel.bookings)
+
+  console.log('selected date', selectedDate)
+  console.log('ROOMS', availableRoomsByDate)
+
+  domUpdates.displayRoomsAvailableByDateSelected(availableRoomsByDate);
+  $('.managerview-book-button').on('click', managerAddBooking);
+  return availableRoomsByDate
+}
+
+function managerFilterRoomResults() {
+  let availableRoomsByDate = searchRooms()
+  let filterType = $('#roomtype-select').val().split('-').join(' ')
+  let filteredRooms = availableRoomsByDate.filter(room => room.roomType === filterType)
+  console.log(filteredRooms)
+  domUpdates.displayRoomsAvailableByDateSelected(filteredRooms);
+
+  $('.managerview-book-button').on('click', managerAddBooking);
+}
+
+
+function managerAddBooking(e) {
+  let selectedDate = $('#date').val().split('-').join('/')
+  let roomNumber = e.target.parentNode.parentNode.dataset.id
+  // console.log(roomNumber)
+  // console.log(typeof roomNumber);
+  manager.bookARoom($('.customer-details').attr('data-id'), selectedDate, roomNumber)
+  e.target.parentNode.parentNode.remove()
+}
+
 
 
 

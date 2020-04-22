@@ -33,35 +33,35 @@
   @extend .booking-card-info;
 }
 
-.customerview-booking-container {
+.booking-container {
   @extend .booking-container;
   display: flex;
 }
 
-.customerview-booking-headers-container {
+.booking-headers-container {
   @extend .booking-headers-container;
 }
 
-.customerview-make-bookings-container {
+.make-bookings-container {
   height: 25em;
   flex-direction: row;
   justify-content: center;
   overflow: scroll;
 }
 
-.customerview-room-details-card {
+.room-details-card {
   @extend .room-details-card;
 }
 
-.customerview-room-details-info {
+.room-details-info {
   @extend .room-details-info;
 }
 
-.customerview-book-button-container {
+.book-button-container {
   @extend .book-button-container;
 }
 
-.customerview-book-button {
+.book-button {
   @extend .book-button;
 }
 
