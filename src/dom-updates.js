@@ -60,6 +60,7 @@ let domUpdates = {
 
   displaySearchedGuestInfo(guest, rooms) {
     $('.customer-booking-history').html('')
+    $('.delete-bookings-container').html('')
     $('.customer-booking-history').append(
       `<div class="customer-booking-header">
         <p data-id=${guest.id} class="customer-heading">${guest.name}</p>
@@ -90,30 +91,27 @@ let domUpdates = {
 
 
   displayBookingsToDelete(guest) {
-    const result = guest.myBookings.map(booking => {
-      let bookedHistory = {};
-      bookedHistory.id = booking.id;
-      bookedHistory.roomNumber = booking.roomNumber;
-      bookedHistory.date = booking.date;
-      return bookedHistory
-    })
-    result.filter(booking => {
-      if (booking.date > new Date()) {
+    const futureBooking = guest.myBookings.filter(booking => {
+      if (booking.date > new Date().toISOString().slice(0,10).split('-').join('/')) {
         return booking
       }
     })
-    $('.delete-bookings-container').append(
-      `<div data-id="${booking.id}" class="delete-booking-card">
+    if (futureBooking.length < 1) {
+      $('.delete-bookings-container').prepend(`<p class="delete-error-message">Sorry, there are no future bookings to delete.</p>`)
+    }
+    futureBooking.forEach(booking => {
+      $('.delete-bookings-container').prepend(
+        `<div data-id="${booking.id}" class="delete-booking-card">
         <p class="booking-card-info">Booking ID: ${booking.id} </p>
         <p class="booking-card-info">Room Number: ${booking.roomNumber} </p>
         <p class="booking-card-info">Date: ${booking.date} </p>
         <div class="delete-button-container">
-          <button class="delete-booking-button" type="button">Delete</button>
+        <button class="delete-booking-button" type="button">Delete</button>
         </div>
-      </div>`
-    )
+        </div>`
+      )
+    })
   },
-
 
 }
 
