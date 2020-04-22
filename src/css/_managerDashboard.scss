@@ -139,10 +139,6 @@
   justify-content: flex-end;
 }
 
-.manager-search-error-message {
-  @extend .search-error-message;
-}
-
 .search-guest-button {
   @extend .logout;
 }
@@ -179,4 +175,8 @@
 .delete-booking-card {
   @extend .booking-card;
   height: 8em;
+}
+
+.delete-error-message {
+  @extend .search-error-message;
 }

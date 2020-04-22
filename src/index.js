@@ -24,8 +24,6 @@ const fetchData = () => {
     .then(finalValues => {
       hotel = new Hotel(new Date(), finalValues[0].users, finalValues[1].rooms, finalValues[2].bookings);
       hotel.getTodaysDate();
-      console.log(hotel)
-      console.log(finalValues)
       if (document.location.pathname === '/guest.html') {
         welcomeGuest();
         domUpdates.displayGuestTotalAmounts(hotel.rooms, guest);
@@ -230,16 +228,16 @@ function managerAddBooking(e) {
 }
 
 function findBookingToDelete() {
-  console.log(guest);
   domUpdates.displayBookingsToDelete(guest)
 
-//   When click on delete a booking, gather all guest bookings for CURRENT guest  //  [guestBookings]
-//  Filter those bookings by comparing the date of the bookings to todays date. // [guestBookings.filter]
-// If the booking date is greater than todays date {
-// 	return booking
-// }
+  $('.delete-booking-button').on('click', managerDeleteBooking);
 }
 
+function managerDeleteBooking(e) {
+  let bookingID = e.target.parentNode.parentNode.dataset.id;
+  manager.deleteBooking(bookingID);
+  e.target.parentNode.parentNode.remove()
+}
 
 
 
