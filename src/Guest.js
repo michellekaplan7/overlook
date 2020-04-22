@@ -44,7 +44,6 @@ class Guest {
     }, 0)
   }
 
-
 }
 
 export default Guest;

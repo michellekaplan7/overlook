@@ -33,7 +33,6 @@ class Hotel {
     return roomsAvailable;
   }
 
-
 }
 
 export default Hotel;

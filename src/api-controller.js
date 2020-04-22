@@ -17,8 +17,7 @@ class ApiController {
     let url = `${this.rootUrl}/rooms/rooms`
     return fetch(url).then(response => response.json());
   }
-
-
+  
 }
 
 export default ApiController;

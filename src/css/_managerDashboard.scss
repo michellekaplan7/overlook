@@ -62,8 +62,8 @@
 
 .customer-details-container {
   @extend .manager-dashboard-container;
+  display: flex;
 }
-
 
 .customer-booking-header {
   @include flexin(row);
@@ -72,16 +72,13 @@
 
 .booking-cards-container {
   height: 25em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   overflow: scroll;
 }
 
 .booking-card {
   border: 1px solid black;
   width: 40em;
-  height: 4em;
+  height: 5em;
   margin-top: 2em;
   padding: 0.6em;
   background-color: $lightgrey;
@@ -105,16 +102,6 @@
   @extend .booking-card-info;
   justify-content: space-around;
   margin: 1em 0;
-}
-
-.booking-header {
-  @extend .customer-heading;
-  @extend .book-button;
-}
-
-.make-delete-bookings-container {
-  @extend .booking-cards-container;
-  overflow: scroll;
 }
 
 .room-details-card {
@@ -150,4 +137,46 @@
 .book-button-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.manager-search-error-message {
+  @extend .search-error-message;
+}
+
+.search-guest-button {
+  @extend .logout;
+}
+
+.delete-container {
+  @extend .booking-container;
+}
+
+.delete-header-container {
+  @extend .booking-headers-container;
+}
+
+.delete-bookings-container {
+  @extend .make-bookings-container;
+}
+
+.delete-a-room-header {
+  @extend .book-a-room-header;
+}
+
+.find-bookings-to-delete-button {
+  @extend .submit-date;
+}
+
+.delete-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-booking-button {
+  @extend .book-button;
+}
+
+.delete-booking-card {
+  @extend .booking-card;
+  height: 8em;
 }
