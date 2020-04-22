@@ -16,6 +16,9 @@ Overlook was a one week solo project assigned for Module 2 of the Turing School 
 - As a manager, you can search for a specific guest and see their booking history and the total amount they've spent. You can then also book a room for that specific guest you've searched for. The same as the customer, you can search for a room by date and filter by room type. If there aren't any rooms that match the search query, an error message will appear. Otherwise, you can click the book button to book a room and it's immediately removed from the DOM.
 ![overlook-manager-book-room](https://media.giphy.com/media/dZY1FHoIq4UvBsTJoM/giphy.gif)
 
+- As a manager, you can search for a specific guest and click 'find bookings to delete'. A list of their future bookings will appear. If they don't have any future bookings, an error message will appear. Otherwise, you can click on the delete booking and the booking will be deleted, along with the booking card being removed from the DOM.
+![overlook-manager-book-room](https://media.giphy.com/media/Y4WBwJZ1p2pTvcU19C/giphy.gif)
+
 ## Setup
 
 1. Clone down this repo
@@ -43,7 +46,6 @@ npm install
 - Implement testing with spies
 - Cross-browser compatibility
 - Media queries for mobile responsiveness
-- Delete a booking for the manager portal
 - Fix issues that are marked in the issues of this GitHub project
 
 ## Contributor
