@@ -88,9 +88,32 @@ let domUpdates = {
     })
   },
 
-  // displaySearchErrorMessage() {
-  //   $('.search-error-message').removeClass('hidden');
-  // },
+
+  displayBookingsToDelete(guest) {
+    const result = guest.myBookings.map(booking => {
+      let bookedHistory = {};
+      bookedHistory.id = booking.id;
+      bookedHistory.roomNumber = booking.roomNumber;
+      bookedHistory.date = booking.date;
+      return bookedHistory
+    })
+    result.filter(booking => {
+      if (booking.date > new Date()) {
+        return booking
+      }
+    })
+    $('.delete-bookings-container').append(
+      `<div data-id="${booking.id}" class="delete-booking-card">
+        <p class="booking-card-info">Booking ID: ${booking.id} </p>
+        <p class="booking-card-info">Room Number: ${booking.roomNumber} </p>
+        <p class="booking-card-info">Date: ${booking.date} </p>
+        <div class="delete-button-container">
+          <button class="delete-booking-button" type="button">Delete</button>
+        </div>
+      </div>`
+    )
+  },
+
 
 }
 

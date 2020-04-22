@@ -65,7 +65,6 @@
   display: flex;
 }
 
-
 .customer-booking-header {
   @include flexin(row);
   justify-content: space-around;
@@ -104,16 +103,6 @@
   justify-content: space-around;
   margin: 1em 0;
 }
-
-// .booking-header {
-//   @extend .customer-heading;
-//   @extend .book-button;
-// }
-
-// .make-delete-bookings-container {
-//   @extend .booking-cards-container;
-//   overflow: scroll;
-// }
 
 .room-details-card {
   border: 1px solid black;
@@ -158,51 +147,36 @@
   @extend .logout;
 }
 
-//----------
-// .managerview-booking-container {
-//   @extend .customerview-booking-container;
-// }
-//
-// .managerview-booking-headers-container {
-//   @extend .customerview-booking-headers-container;
-// }
-//
-// .managerview-book-a-room-header {
-//   @extend .book-a-room-header;
-// }
-//
-// .managerview-make-bookings-container {
-//   @extend .customerview-make-bookings-container;
-// }
-//
-// .managerview-room-details-card {
-//   @extend .customerview-room-details-card;
-// }
-//
-// .managerview-room-details-info {
-//   @extend .customerview-room-details-info;
-// }
-//
-// .managerview-book-button-container {
-//   @extend .customerview-book-button-container;
-// }
-//
-// .managerview-book-button {
-//   @extend .customerview-book-button;
-// }
-//
-// .delete-booking-button {
-//   @extend .submit-date;
-// }
-//
-// .manager-delete-booking-container {
-//   @extend .managerview-make-bookings-container;
-// }
-//
-// .delete-form-container {
-//   @extend .managerview-room-details-card;
-// }
-//
-// .delete-booking-button {
-//   @extend .book-button;
-// }
+.delete-container {
+  @extend .booking-container;
+}
+
+.delete-header-container {
+  @extend .booking-headers-container;
+}
+
+.delete-bookings-container {
+  @extend .make-bookings-container;
+}
+
+.delete-a-room-header {
+  @extend .book-a-room-header;
+}
+
+.find-bookings-to-delete-button {
+  @extend .submit-date;
+}
+
+.delete-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-booking-button {
+  @extend .book-button;
+}
+
+.delete-booking-card {
+  @extend .booking-card;
+  height: 8em;
+}

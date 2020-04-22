@@ -55,7 +55,6 @@ class Manager {
     return percentageOfRoomsOccupiedToday;
   }
 
-
 }
 
 export default Manager;
